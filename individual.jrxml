@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="individual" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3a48444-0335-47cb-b643-579d7a0c973b">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="150"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="HouseNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Month" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Year" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM `monthlywater` where `houseno` =$P{HouseNo} and `Month` =$P{Month} and `Year`=$P{Year}]]>
+	</queryString>
+	<field name="lid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="block" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="houseno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="meterno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tenantname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monthN" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reading" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="units" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paid" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="65" y="10" width="395" height="93" uuid="732174fd-6725-4c5b-955e-fd9b8f996967"/>
+				<textElement>
+					<font size="80" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="65" y="103" width="272" height="29" uuid="f4afb5ac-47fd-4548-bf15-c2bea19b929b"/>
+				<textElement>
+					<font size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Water Charges]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="508" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="46" width="122" height="29" forecolor="#000000" uuid="43e0e661-e3e8-4814-b294-5d2a3e8c7d7b"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[houseno]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="46" width="338" height="29" uuid="e929aa12-934f-45e2-9a8d-95817d93b50b"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{houseno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="75" width="122" height="29" forecolor="#000000" uuid="db88def0-eabc-4e65-9932-1975d1f66461"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[meterno]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="75" width="338" height="29" uuid="122616cc-3d4f-45d9-a53b-8df01e89a859"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{meterno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="104" width="122" height="29" forecolor="#000000" uuid="535e0901-1af4-4b50-bcae-5bb9c7919f07"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[tenantname]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="104" width="338" height="29" uuid="15a01b7d-05d9-4a33-8fc0-c760ed54fd9e"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenantname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="133" width="122" height="29" forecolor="#000000" uuid="0259a0f3-8659-4405-8beb-9058cdd22f82"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[month]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="133" width="338" height="29" uuid="17d32d7e-df29-43ab-8b53-730c30da96ea"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="162" width="122" height="29" forecolor="#000000" uuid="ae5f7338-3292-4eb6-a891-baed06f5fdf2"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[year]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="162" width="338" height="29" uuid="1cb77615-b0b9-417d-bf0c-6e93e4277dd3"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="191" width="122" height="29" forecolor="#000000" uuid="6cd45e1a-f813-4fea-8bcb-a0cfc208a626"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[reading]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="191" width="338" height="29" uuid="8234d12b-01b9-48b0-b1f8-971dd837493b"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reading}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="220" width="122" height="29" forecolor="#000000" uuid="c64935fd-8ff8-4cfe-b6ab-4827a91d3356"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[units]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="220" width="338" height="29" uuid="6d2d0e75-a49f-4f5b-80e5-634759c1326b"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{units}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="249" width="122" height="29" forecolor="#000000" uuid="6ea7ed2e-d53a-4593-a57a-ab50f6dd9c83"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[rate]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="249" width="338" height="29" uuid="96d60925-ffe5-4590-8fa4-edf28d595a46"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="278" width="122" height="29" forecolor="#000000" uuid="050c6d10-b71f-4947-91a7-7a8c9654ab0d"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[amount]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="278" width="338" height="29" uuid="5db6cec2-8333-4928-80ed-2bb4d3a1c1b6"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="79" y="312" width="456" height="77" uuid="00d80ee9-7cd0-4aa8-a70b-dd030267e0b6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[In subsequent Months the water bill will be an e-bill that will be inquired via SMS. A time period of 1 week will be provided for you to inquire for your bill. The number is 0705098254.
+The time period will be opened from the 1st of every month. The text will not incur any additional charges.
+Thanks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="389" width="61" height="20" uuid="ae05c6a3-9800-451e-9aac-7696c4e33ed8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Format is]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="146" y="389" width="28" height="20" uuid="a7da6cae-d0ec-4229-ac15-53f9e885d5a4"/>
+				<textElement>
+					<font size="14" isBold="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{houseno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="174" y="389" width="7" height="20" uuid="b58caa6f-ea28-4e1c-ad8a-5f9baa3a9adc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="389" width="100" height="20" uuid="8d2427e2-3112-4f20-9d09-5961bbde0614"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Month#Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="419" width="202" height="40" uuid="397570f6-70dd-4283-8125-a92c54a4dcf4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[No spaces in the text.
+Example: H3#March#2014]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="4" y="490" width="551" height="1" uuid="ea3c3ded-71f0-492a-b129-6bb10532d746"/>
+			</line>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="79" y="17" width="122" height="29" forecolor="#000000" uuid="5cfefb77-c90e-499d-a9da-6eccec9cc80e"/>
+				<textElement textAlignment="Right">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[block]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="215" y="17" width="338" height="29" uuid="f6ccae53-56d4-42ed-ae45-d2278816e673"/>
+				<textElement>
+					<font size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{block}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6db9d7dc-4943-40cd-b9c4-54d1afc7d2b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="57cbd001-a977-4a8b-b496-36ab3ce467fa"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="511" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="cd786afc-0cb2-4089-8674-62509c079471"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="402" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="3e3f1945-5f21-4384-8131-93284652269d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="ce6cb805-e95c-41a6-88bf-8bf6d73a241a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
